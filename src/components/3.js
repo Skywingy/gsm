@@ -58,16 +58,14 @@ function Three() {
     setOutputString(output);
   }
   return (
-        <div>
-            <h1>Даалгавар 3:</h1>
-            <p>Өгөгдсөн тоог үсгээр хэвлэх</p>
-            <label htmlFor="input">Enter a number to convert to words:</label>
-            <br />
+        <div className='content'>
+            <h1 className='title'>Даалгавар 3:</h1>
+            <h4>Өгөгдсөн тоог үсгээр хэвлэх</h4>
+            <label className='top' htmlFor="input">Хөрвүүлэх тоогоо оруулна уу:</label>
             <input type="number" id="input" value={inputNumber} onChange={handleInputChange} maxLength="20"/>
+            <button onClick={handleConvertClick}>Хөрвүүлэх</button>
             <br />
-            <button onClick={handleConvertClick}>Convert</button>
-            <br />
-            <p>{outputString}</p>
+            <p className='card'>{outputString}</p>
             <br />
             <br />
             <br />

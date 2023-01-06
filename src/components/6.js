@@ -61,11 +61,15 @@ function generateRepaymentPlan(startDate, endDate, paymentAmount, interestRate, 
   let paymentNumber = 1;
   let paymentDate = start;
   const payments = [];
+  let formattedBalance = 0;
+  
 
   while (balance > 0) {
-    const interestPaid = balance * interestRatePerPayment;
-    const principalPaid = paymentAmount - interestPaid;
+    const interestPaid = parseFloat(balance * interestRatePerPayment).toFixed(2);
+    const principalPaid = parseFloat(paymentAmount - interestPaid).toFixed(2);
     balance -= principalPaid;
+    formattedBalance = balance.toFixed(2);
+    
 
     if (paymentNumber % 2 === 1) {
       paymentDate.setDate(paymentDay1);
@@ -91,7 +95,6 @@ function generateRepaymentPlan(startDate, endDate, paymentAmount, interestRate, 
   return payments;
   
 }
-
 
 
 
@@ -153,19 +156,17 @@ function Six() {
   
 
   return (
-        <div>
-            <h1>Даалгавар 6:</h1>
-            <p>Зээлийн эргэн төлөлтийн хуваарь</p>
+        <div className='content1'>
+            <h1 className='title'>Даалгавар 6:</h1>
+            <h4>Зээлийн эргэн төлөлтийн хуваарь</h4>
+            <div className='topp'>
             <label htmlFor="start-date">Зээл эхэлсэн огноо:</label>
-            <br />
             <input type="date" id="start-date" value={startDate} onChange={handleStartDateChange} />
             <br />
             <label htmlFor="end-date">Зээл дуусах огноо:</label>
-            <br />
             <input type="date" id="end-date" value={endDate} onChange={handleEndDateChange} />
             <br />
             <label htmlFor="payment-amount">Зээлийн дүн:</label>
-            <br />
             <input
               type="number"
               id="payment-amount"
@@ -173,8 +174,7 @@ function Six() {
               onChange={handlePaymentAmountChange}
             />
             <br />
-            <label htmlFor="interest-rate">Хүүгийг хэмжээ:</label>
-            <br />
+            <label htmlFor="interest-rate">Хүүгийн хэмжээ:</label>
             <input
               type="number"
               id="interest-rate"
@@ -183,7 +183,6 @@ function Six() {
             />
             <br />
             <label htmlFor="payment-day-1">Тухайн сарын эхний төлөлтийн огноо:</label>
-            <br />
             <input
               type="number"
               id="payment-day-1"
@@ -192,7 +191,6 @@ function Six() {
             />
             <br />
             <label htmlFor="payment-day-2">Тухайн сарын хоёр дахь төлөлтийн огноо:</label>
-            <br />
             <input
               type="number"
               id="payment-day-2"
@@ -200,6 +198,7 @@ function Six() {
               onChange={handlePaymentDay2Change}
             />
             <br />
+            </div>
             <button onClick={handleGenerateClick}>Хуваарь үүсгэх</button>
             <br />
             <div>

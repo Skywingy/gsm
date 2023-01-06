@@ -34,17 +34,17 @@ function One(input) {
     setOutputString(output);
   }
   return (
-        <div>
-            <h1>Даалгавар 1:</h1>
-            <p>Монголоор бичсэн текстийг латинаар хөрвүүлэх</p>
+        <div className='content1'>
+            <h1 className='title'>Даалгавар 1:</h1>
+            <h4>Монголоор бичсэн текстийг латинаар хөрвүүлэх</h4>
 
-            <label htmlFor="input">Хөрвүүлэх текстээ оруулна уу:</label>
+            <label htmlFor="input" className='top'>Хөрвүүлэх текстээ оруулна уу:</label>
             <br />
             <input type="text" id="input" value={inputString} onChange={handleInputChange} />
             <br />
             <button onClick={handleConvertClick}>Хөрвүүлэх</button>
             <br />
-            <p>Хөрвүүлсэн текст: {outputString}</p>
+            <p className='card'>Хөрвүүлсэн текст: {outputString}</p>
         </div>
         
   );

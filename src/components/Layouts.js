@@ -29,7 +29,7 @@ const Layout = () => {
         </ul>
       </nav>
 
-      <Outlet className = "main" />
+      <Outlet />
     </div>
   )
 };

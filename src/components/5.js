@@ -37,20 +37,18 @@ function Five() {
   }
 
   return (
-        <div>
-            <h1>Даалгавар 5:</h1>
-            <p>Гараас оруулсан огнооны зөрүүг жил сар өдрөөр хэвлэх:</p>
+        <div className='content'>
+            <h1 className='title'>Даалгавар 5:</h1>
+            <h4>Гараас оруулсан огнооны зөрүүг жил сар өдрөөр хэвлэх:</h4>
             <label htmlFor="start-date">Бага жилийг нь оруулна уу:</label>
-            <br />
             <input type="date" id="start-date" value={startDate} onChange={handleStartDateChange} />
             <br />
             <label htmlFor="end-date">Сүүлийн жилийг нь оруулна уу:</label>
-            <br />
             <input type="date" id="end-date" value={endDate} onChange={handleEndDateChange} />
             <br />
-            <button onClick={handleCalculateClick}>Calculate</button>
+            <button onClick={handleCalculateClick}>Тооцоолох</button>
             <br />
-            <p>
+            <p className='card'>
               {difference.years} жил, {difference.months} сар, {difference.days} өдөр - н зөрүүтэй байна.
             </p>
         </div>

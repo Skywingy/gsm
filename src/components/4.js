@@ -37,16 +37,14 @@ function Four() {
     }
   }
   return (
-        <div>
-            <h1>Даалгавар 4:</h1>
-            <p>Оруулсан жил өндөр жил эсэх:</p>
-            <label htmlFor="input">Өндөр жил эсэх шалгах:</label>
-            <br />
+        <div className='content'>
+            <h1 className='title'>Даалгавар 4:</h1>
+            <h4>Оруулсан жил өндөр жил эсэх:</h4>
+            <label className='top' htmlFor="input">Өндөр жил эсэх шалгах:</label>
             <input type="number" id="input" value={inputYear} onChange={handleInputChange} maxLength="4"/>
-            <br />
             <button onClick={handleCheckClick}>Шалгах</button>
             <br />
-            <p>{outputString}</p>
+            <p className='card'>{outputString}</p>
         </div>
   );
 }

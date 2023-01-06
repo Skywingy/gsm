@@ -26,16 +26,16 @@ function Two() {
   }
   return (
     
-        <div>
-            <h1>Даалгавар 2:</h1>
-            <p>Өгсөн тооны цифрүүдийн нийлбэрийг олох</p>
-            <label htmlFor="input">Дурын тоогоо оруулна уу:</label>
+        <div className = "content1">
+            <h1 className='title'>Даалгавар 2:</h1>
+            <h4>Өгсөн тооны цифрүүдийн нийлбэрийг олох</h4>
+            <label htmlFor="input" className='top'>Дурын тоогоо оруулна уу:</label>
             <br />
             <input type="number" id="input" value={inputNumber} onChange={handleInputChange}/>
             <br />
             <button onClick={handleCalculateClick}>Тооцоолох</button>
             <br />
-            <p>Оруулсан тооны цифрүүдийн нийлбэр = {outputNumber}</p>
+            <p className='card'>Оруулсан тооны цифрүүдийн нийлбэр : {outputNumber}</p>
         </div>
   );
 }
