@@ -2,9 +2,9 @@ import { Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <>
+    <div className="Main">
       <nav>
-        <ul>
+        <ul className="className Navbar">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -29,8 +29,8 @@ const Layout = () => {
         </ul>
       </nav>
 
-      <Outlet />
-    </>
+      <Outlet className = "main" />
+    </div>
   )
 };
 
