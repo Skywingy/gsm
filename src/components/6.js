@@ -34,8 +34,8 @@ const columns = [
   },
   {
     title: 'Онолын үлдэгдэл',
-    dataIndex: 'balance',
-    key: 'balance',
+    dataIndex: 'formattedBalance',
+    key: 'formattedBalance',
   },
 ];
 
@@ -49,15 +49,16 @@ function example() {
   return value;
 }
 
-function generateRepaymentPlan(startDate, endDate, paymentAmount, interestRate, paymentDay1, paymentDay2) {
+function generateRepaymentPlan(startDate, endDate, paymentAmount, interestRate, paymentDay1, paymentDay2, totalPayThis) {
   const start = new Date(startDate);
   const end = new Date(endDate);
   const diffTime = Math.abs(end - start);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   const numPayments = diffDays / 30;
   const interestRatePerPayment = interestRate / 12 / 100;
+  totalPayThis = 0;
 
-  let balance = paymentAmount * numPayments;
+  let balance = paymentAmount - totalPayThis;
   let paymentNumber = 1;
   let paymentDate = start;
   const payments = [];
@@ -65,10 +66,14 @@ function generateRepaymentPlan(startDate, endDate, paymentAmount, interestRate, 
   
 
   while (balance > 0) {
-    const interestPaid = parseFloat(balance * interestRatePerPayment).toFixed(2);
-    const principalPaid = parseFloat(paymentAmount - interestPaid).toFixed(2);
+    const interestPaid = parseFloat(paymentAmount / 100 * interestRate).toFixed(2);
+    console.log("2", interestPaid);
+    const principalPaid = parseFloat(paymentAmount / numPayments).toFixed(2);
+    console.log("1", principalPaid);
     balance -= principalPaid;
     formattedBalance = balance.toFixed(2);
+    totalPayThis = parseInt(interestPaid) + parseInt(principalPaid);
+    console.log("3", totalPayThis);
     
 
     if (paymentNumber % 2 === 1) {
@@ -77,14 +82,18 @@ function generateRepaymentPlan(startDate, endDate, paymentAmount, interestRate, 
       paymentDate.setDate(paymentDay2);
     }
 
+    
+
     payments.push({
       key: paymentNumber,
       paymentNumber,
       paymentAmount,
+      totalPayThis,
       paymentDate: paymentDate.toDateString(),
       principalPaid,
       interestPaid,
-      balance,
+      formattedBalance,
+
     });
 
     paymentNumber++;
@@ -203,7 +212,6 @@ function Six() {
             <br />
             <div>
             <Table columns={columns} dataSource={data} />
-              
             </div>
             
 
